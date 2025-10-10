@@ -1,0 +1,62 @@
+name: Update OpenList Binary
+
+on:
+  schedule:
+    # 每天UTC时间00:00执行（北京时间08:00）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  update-binary:
+    runs-on: ubuntu-latest
+    name: Update OpenList Binary
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-binary:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token:${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Download latest OpenList release (musl version)
+        run: |
+          echo "Downloading openlist-linux-musl-amd64-lite.tar.gz..."
+          wget https://github.com/OpenListTeam/OpenList/releases/latest/download/openlist-linux-musl-amd64-lite.tar.gz
+      
+      - name: Extract tar.gz file
+        run: |
+          echo "Extracting archive..."
+          tar -xzf openlist-linux-musl-amd64-lite.tar.gz
+          rm openlist-linux-musl-amd64-lite.tar.gz
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git add .
+          if git diff --staged --quiet; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          fi
+      
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "chore: update OpenList binary (musl) from latest release"
+          git push
+      
+      - name: No updates needed
+        if: steps.check_changes.outputs.changes == 'false'
+        run: echo "Binary is already up to date"
