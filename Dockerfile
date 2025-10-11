@@ -9,14 +9,12 @@ WORKDIR /opt
 RUN mkdir -p /opt/openlist
 # 复制二进制文件到容器中
 COPY openlist /opt/openlist/openlist
-
+COPY entrypoint.sh /opt/entrypoint.sh
 # 给二进制文件添加执行权限
 RUN chmod +x /opt/openlist/openlist
 
 # 暴露5244端口
 EXPOSE 5244
 
-# 设置入口点和默认命令
-ENTRYPOINT ["/opt/openlist/openlist"]
-CMD ["server"]
-CMD ["--no-prefix"]
+# 设置入口点
+ENTRYPOINT ["/opt/entrypoint.sh"]
