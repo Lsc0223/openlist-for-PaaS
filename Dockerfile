@@ -3,10 +3,10 @@ FROM alpine:latest
 
 # 安装必要的运行时依赖
 RUN apk --no-cache add ca-certificates tzdata
-
-# 设置工作目录
-WORKDIR /opt
 RUN mkdir -p /opt/openlist
+# 设置工作目录
+WORKDIR /opt/openlist
+
 # 复制二进制文件到容器中
 COPY openlist /opt/openlist/openlist
 # 给二进制文件添加执行权限
