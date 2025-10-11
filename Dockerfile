@@ -17,4 +17,5 @@ RUN chmod +x /opt/openlist/openlist
 EXPOSE 5244
 
 # 设置入口点
-ENTRYPOINT ["/opt/entrypoint.sh"]
+ENTRYPOINT ["/opt/openlist/openlist"]
+CMD ["server --no-prefix"]
