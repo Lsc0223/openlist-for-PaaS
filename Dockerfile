@@ -9,7 +9,6 @@ WORKDIR /opt
 RUN mkdir -p /opt/openlist
 # 复制二进制文件到容器中
 COPY openlist /opt/openlist/openlist
-COPY entrypoint.sh /opt/entrypoint.sh
 # 给二进制文件添加执行权限
 RUN chmod +x /opt/openlist/openlist
 
