@@ -17,4 +17,4 @@ EXPOSE 5244
 
 # 设置入口点
 ENTRYPOINT ["/opt/openlist/openlist"]
-CMD ["server --no-prefix"]
+CMD ["server","--no-prefix"]
