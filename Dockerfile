@@ -17,6 +17,6 @@ RUN chmod +x /opt/openlist/openlist
 EXPOSE 5244
 
 # 设置入口点和默认命令
-ENTRYPOINT ["/app/openlist"]
+ENTRYPOINT ["/opt/openlist/openlist"]
 CMD ["server"]
 CMD ["--no-prefix"]
