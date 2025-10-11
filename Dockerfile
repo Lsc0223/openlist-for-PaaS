@@ -6,7 +6,7 @@ RUN apk --no-cache add ca-certificates tzdata
 
 # 设置工作目录
 WORKDIR /opt
-RUN mkdir -f /opt/openlist
+RUN mkdir -p /opt/openlist
 # 复制二进制文件到容器中
 COPY openlist /opt/openlist/openlist
 
