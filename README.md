@@ -43,7 +43,7 @@ liu0223liu/openlist-for-paas
 
 ## 开源协议
 
-本项目采用 [MIT License](LICENSE) 开源协议。
+本项目采用 [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.html) 开源协议。
 
 ## 相关链接
 
