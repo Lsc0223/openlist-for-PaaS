@@ -8,13 +8,8 @@ RUN mkdir -p /opt/openlist
 WORKDIR /opt/openlist
 
 # 复制二进制文件到容器中
-COPY openlist /opt/openlist/openlist
+COPY openlist ./openlist
 # 给二进制文件添加执行权限
-RUN chmod +x /opt/openlist/openlist
-
-# 暴露5244端口
-EXPOSE 5244
-
-# 设置入口点
-ENTRYPOINT ["/opt/openlist/openlist"]
+RUN chmod +x ./openlist
+ENTRYPOINT ["./openlist"]
 CMD ["server","--no-prefix"]
