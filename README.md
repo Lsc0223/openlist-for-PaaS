@@ -18,18 +18,14 @@
 直接使用预构建的 Docker 镜像即可快速部署：
 
 ```bash
-docker pull liu0223liu/openlist-for-paas
-docker run -d -p 5244:5244 liu0223liu/openlist-for-paas
+docker pull liu0223/oplist-fp
+docker run -d -p 5244:5244 liu0223/oplist-fp
 ```
 ### PaaS 平台部署
 在支持 Docker 的 PaaS 平台（如 Railway、Fly.io 等）上，只需将 Docker 镜像地址替换为：
-
-```plaintext
-ghcr.io/lsc0223/openlist-for-paas
+dockerhub镜像
 ```
-或者dockerhub镜像
-```
-liu0223liu/openlist-for-paas
+liu0223/oplist-fp
 ```
 即可正常使用。
 
